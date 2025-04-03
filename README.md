@@ -4,9 +4,7 @@ Summary of all existing real time markerless motion capture tools
 ## Classification by type of method used
 ### Methods based directly on video
 1. XNect: real-time multi-person 3D motion capture with a single RGB camera[[project]](http://gvv.mpi-inf.mpg.de/projects/XNect/)
-![image](https://github.com/visonpon/human-motion-capture/blob/main/images/Xnet.png)
 2. 4D Association Graph for Realtime Multi-person Motion Capture Using Multiple Video Cameras [[code]](https://github.com/zhangyux15/4d_association)
-![image](https://github.com/visonpon/human-motion-capture/blob/main/images/4dAsspciation.png)
 3. Real-time Monocular Full-body Capture in World Space via Sequential Proxy-to-Motion Learning [[project]](https://liuyebin.com/proxycap/)
 4. MOVIN: Real-time Motion Capture using a Single LiDAR [[project]](https://movin3d.github.io/movin_pg2023/)
 5. ELMO: Enhanced Real-time LiDAR Motion Capture through Upsampling [[pdf]](https://arxiv.org/pdf/2410.06963)
@@ -15,9 +13,9 @@ Summary of all existing real time markerless motion capture tools
 
 ### Methods based on body model such as smpl/smpl-x
 7. Real-time RGBD-based Extended Body Pose Estimation [[code]](https://github.com/rmbashirov/rgbd-kinect-pose)
-![image](https://github.com/visonpon/human-motion-capture/blob/main/images/rgbd-kinect-pose.png)
 8. Deep3DPose: Realtime Reconstruction of Arbitrarily Posed Human Bodies from Single RGB Images [[paper]](https://arxiv.org/pdf/2106.11536.pdf)
 9. Monocular Real-time Full Body Capture with Inter-part Correlations [[paper]](https://arxiv.org/pdf/2012.06087.pdf)
+
 
 
 ### Human 3d pose estimation
@@ -28,19 +26,15 @@ Summary of all existing real time markerless motion capture tools
 ### Simplify optical or inertial based motion capture
 12. Real-Time Multi-person Motion Capture from Multi-view Video and IMUs[[paper]](https://link.springer.com/content/pdf/10.1007/s11263-019-01270-5.pdf)
 13. Physical Inertial Poser (PIP):Physics-aware Real-time Human Motion Tracking from Sparse Inertial Sensors [[project]](https://xinyu-yi.github.io/PIP/)
-14. Transformer Inertial Poser: Attention-based Real-time Human Motion Reconstruction from Sparse IMUs [[project]](https://github.com/jyf588/transformer-inertial-poser)
+14. TIP: Real-time Human Motion Reconstruction from Sparse IMUs with Simultaneous Terrain Generation [[pdf]](https://arxiv.org/pdf/2203.15720.pdf)
 15. Fusion Poser: 3D Human Pose Estimation using Sparse IMUs and Head Tracker in real-time [[code]](https://github.com/LuzyCat/FusionPoser)
-16. TIP: Real-time Human Motion Reconstruction from Sparse IMUs with Simultaneous Terrain Generation [[pdf]](https://arxiv.org/pdf/2203.15720.pdf)
+16. Transformer Inertial Poser: Attention-based Real-time Human Motion Reconstruction from Sparse IMUs [[project]](https://www.researchgate.net/publication/359574778_Transformer_Inertial_Poser_Attention-based_Real-time_Human_Motion_Reconstruction_from_Sparse_IMUs)
 17. Fusing Monocular Images and Sparse IMU Signals for Real-time Human Motion Capture [[project]](https://shaohua-pan.github.io/robustcap-page/)
 18. EgoPoser: Robust Real-Time Ego-Body Pose Estimation in Large Scenes [[pdf]](https://arxiv.org/pdf/2308.06493.pdf)
-19. Noise-in, Bias-out: Balanced and Real-time MoCap Solving [[project]](https://moverseai.github.io/noise-tail/)
-20. SparsePoser: Real-time Full-body Motion Reconstruction from Sparse Data [[project]](https://upc-virvig.github.io/SparsePoser/)
-21. HMD-Poser: On-Device Real-time Human Motion Tracking from Scalable Sparse Observations [[project]](https://pico-ai-team.github.io/hmd-poser)
-22. Real-Time Simulated Avatar from Head-Mounted Sensors [[project]](https://www.zhengyiluo.com/SimXR/)
+19. SparsePoser: Real-time Full-body Motion Reconstruction from Sparse Data [[project]](https://upc-virvig.github.io/SparsePoser/)
+20. HMD-Poser: On-Device Real-time Human Motion Tracking from Scalable Sparse Observations [[project]](https://pico-ai-team.github.io/hmd-poser)
+21. Real-Time Simulated Avatar from Head-Mounted Sensors [[project]](https://www.zhengyiluo.com/SimXR/)
 
-
-### Human motion capture in 3d scene
-23. EgoLocate:Real-time Motion Capture, Localization, and Mapping with Sparse Body-mounted Sensors [[project]](https://xinyu-yi.github.io/EgoLocate/)
 
 
 ## Summary board
@@ -54,6 +48,7 @@ FCN = Fully Connected Network
 DS = Data Set
 CVAE = Conditional Variational AutoEncoder
 HPE3DA = Human Pose Estimator 3D with Angles
+HMD = Head Mounted Display
 
 
 | num | name              | fps | nb cam   | Multimodal | Multiperson | Open | date  | author       | conf/journ | output | MPJPE (mm) | Joint ang | MJRE (°) | method calc | dataset comp   | comments | link |
@@ -66,21 +61,21 @@ HPE3DA = Human Pose Estimator 3D with Angles
 | 6   | RTMO              | 141 | 1        | NO         | YES         | YES  | 06/24 | Tsinghua GS  |            | HPE2D  | AP given   | NO        | NONE     | NONE        | COCO/CrowdPose (CV) | One Stage method based on Neural network which allows a very high fps rate on GPU | [[pdf]](https://arxiv.org/pdf/2312.07526.pdf) |
 | 7   | RGBD-based        | 30  | 1 Kinect | NO         | NO          | YES  | 03/21 | Samsung AI   | WACV21     | SMPL-X |            | YES       |          |             |                | Combination of existing neural networks for hands, body pose and facial expressions | [[code]](https://github.com/rmbashirov/rgbd-kinect-pose) |
 | 8   | Deep3DPose        | 20  | 1        | NO         | NO          | NO   | 06/21 | Chinese prof |            | SMPL   | 41.8       | YES       | ungiven  |             | Human3.6M (MC) & 3DPW (IMU) |          | [[paper]](https://arxiv.org/pdf/2106.11536.pdf) |
-| 9   | Inter-P correl    | 31  | 1        | NO         | NO          | NO   | 04/21 | Tsinghua Uni | CVPR21     | SMPLH  | 50.3       | YES       | ungiven  | IKNet FCN   | Human3.6m (MC) & HUMBI (CV) | precise hands and head /  3 FCN BodyIKNet, HandIKNet and FaceNet are used to get IK results. DetNet is a first neural network that isolate hands and body and gives keypoints from a raw image to Hand and Body IKNets. Finally a SMPLH model is reconstructed and combined with a 3DMM face model. Metrics for hand, head and body precision are available in the paper| [[paper]](https://arxiv.org/pdf/2012.06087.pdf) |
+| 9   | Inter-P correl    | 31  | 1        | NO         | NO          | NO   | 04/21 | Tsinghua Uni | CVPR21     | SMPLH+ | 50.3       | YES       | ungiven  | IKNet FCN   | Human3.6m (MC) & HUMBI (CV) | precise hands and head /  3 FCN BodyIKNet, HandIKNet and FaceNet are used to get IK results. DetNet is a first neural network that isolate hands and body and gives keypoints from a raw image to Hand and Body IKNets. Finally a SMPLH model is reconstructed and combined with a 3DMM face model. Metrics for hand, head and body precision are available in the paper| [[paper]](https://arxiv.org/pdf/2012.06087.pdf) |
 | 10  | F VXPose          | 31  | 5        | NO         | YES         | YES  | 07/22 | Peking Uni   | ECCV20     | HPE3D  | 18,3       | NO        | NONE     | NONE        | CMU Panoptic (CV) | 3D Triangulation from an off-the-shelf HPE2D | [[pdf]](https://arxiv.org/pdf/2207.10955.pdf) |
 | 11  | BlazePose         | 15  | 1        | NO         | YES         | NO   | 06/22 | Google       |            | GHUM   | 78         | NO        | NONE     | NONE        | "set containing in the wild images" | works on phone / 2D then 3D landmark extracted from HPE BPG3D and full body generated from landmarks by GHUM Litter (comparable to SMPL) | [[pdf]](https://arxiv.org/pdf/2206.11678.pdf) |
-| 12  | MultiVid IMU      |     |          | YES (IMU)  |             |      | 01/19 |              | IJCV20     |        |       |           |             |                |          | [[paper]](https://link.springer.com/content/pdf/10.1007/s11263-019-01270-5.pdf) |
-| 13  | PIP               |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[project]](https://xinyu-yi.github.io/PIP/) |
-| 14  | TIP Attention     |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[pdf]](https://arxiv.org/pdf/2203.15720.pdf) |
-| 15  | Fus poser         |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[project]](https://shaohua-pan.github.io/robustcap-page/) |
-| 16  | TIP Generation    |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[pdf]](https://arxiv.org/pdf/2203.15720.pdf) |
-| 17  | Fusing            |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[project]](https://shaohua-pan.github.io/robustcap-page/) |
-| 18  | EgoPoser          |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[pdf]](https://arxiv.org/pdf/2308.06493.pdf) |
-| 19  | Noise-in Bias-out |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[project]](https://moverseai.github.io/noise-tail/) |
-| 20  | SparsePoser       |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[project]](https://upc-virvig.github.io/SparsePoser/) |
-| 21  | HMD-Poser         |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[project]](https://pico-ai-team.github.io/hmd-poser) |
-| 22  | Simu Avatar       |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[project]](https://www.zhengyiluo.com/SimXR/) |
-| 23  | EgoLocate         |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[project]](https://xinyu-yi.github.io/EgoLocate/) |
+| 12  | MultiVid IMU      | 40  | 1-8 (6/13) | YES (IMU)  | YES       | NO   | 01/19 | Surrey Uni   | IJCV20     | 3DIK   | 16.6       | YES       | 7.4      |             | Total Capture (MC) | Triangulation between cameras and association with IMU data | [[paper]](https://link.springer.com/content/pdf/10.1007/s11263-019-01270-5.pdf) |
+| 13  | PIP               | 60  | 0 (6IMU) | NO (IMU)   | NO          | YES  | 03/22 | Tsinghua Uni | CVPR22     | FullB  | ungiven    | YES       | 12.9     |             | DIP-IMU (IMU) & Total Capture (MC) | The model is aware of physics and give the forces of contact with the gound and the constraints into limbs | [[project]](https://xinyu-yi.github.io/PIP/) |
+| 14  | TIP Generation    | 60  | 0 (6IMU) | NO (IMU)   | NO          | YES  | 12/22 | Stanford     | SIGASIA22  |        | 54         | YES       | 9.5      |             | Total Capture (MC) & DIP-IMU (IMU) | Combination of a learning-based model and analytical routine | [[pdf]](https://arxiv.org/pdf/2203.15720.pdf) |
+| 15  | Fus poser         |     | 0 (6IMU) | YES (IMU+HMD) | NO       | NO   | 06/22 | Korea ETI    |            | SMPL   | 50.51      | YES       | 11.31    | Neural net  | Total Capture (MC) | Combination of HMD and IMUs data by a neural network that calculates SMPL parameters | [[project]](https://shaohua-pan.github.io/robustcap-page/) |
+| 16  | TIP Attention     |     |          |            |             |      | 03/22 |              |            |        |            |           |          |             |                | Barely the same as TIP Generation | [[pdf]]([[project]](https://www.researchgate.net/publication/359574778_Transformer_Inertial_Poser_Attention-based_Real-time_Human_Motion_Reconstruction_from_Sparse_IMUs)) |
+| 17  | Fusing            |     | 1        | YES (IMU)  | NO          | YES  | 09/23 | Tsinghua Uni | SIGASIA23  | SMPL   | 33.5       | YES       | ungiven  |             | Total Capture (MC) & 3DPW (IMU) & AIST (CV) |           | [[project]](https://shaohua-pan.github.io/robustcap-page/) |
+| 18  | EgoPoser          | 600 | 1 HMDFOV | YES (HMD)  | NO          | YES  | 09/24 | ETH Zürich   | ECCV 2024  | SMPLH  | 69         |           |          |             | HPS (HMDFOV+IMU) |           | [[pdf]](https://arxiv.org/pdf/2308.06493.pdf) |
+| 19  | SparsePoser       |     |          |            |             |      |       |              |            |        |            |           |          |             |                |           | [[project]](https://upc-virvig.github.io/SparsePoser/) |
+| 20  | HMD-Poser         |     |          |            |             |      |       |              |            |        |            |           |          |             |                |           | [[project]](https://pico-ai-team.github.io/hmd-poser) |
+| 21  | Simu Avatar       |     |          |            |             |      |       |              |            |        |            |           |          |             |                |           | [[project]](https://www.zhengyiluo.com/SimXR/) |
+
+
 
 ## Datasets
 
@@ -100,13 +95,15 @@ HPE3DA = Human Pose Estimator 3D with Angles
 | COCO         | R                 | Handmade anotatio | Large dataset anotated by pepole | [[project]](https://cocodataset.org/#keypoints-2020) |
 | CrowdPose    | R                 | Handmade anotatio | Large dataset anotated by pepole | [[project]](https://github.com/jeffffffli/CrowdPose) |
 | AMASS        | S based on R      | SMPL based on MC  | Combination of 15 MC datasets in one and applying SMPL model to thes 40hs of MC | [[project]](https://amass.is.tue.mpg.de/) |
-| VoxCeleb     | R                 |                   | Youtube videos of people speaking | [[project]](https://www.robots.ox.ac.uk/~vgg/data/voxceleb/vox1.html)
-| HUMBI        | R                 | CV KRCM keypoints | 107 HD cameras, body, hands and face/gaze movements | [[project]](https://github.com/zhixuany/HUMBI)
-| MANO         | R                 | CV 3DHD model     | 1000 HD cameras scanning in 3D hands of 31 subjects in diverse poses | [[project]](https://mano.is.tue.mpg.de/)
-| Shelf DS     | R                 | Handmade anotatio |          | [[project]](https://campar.in.tum.de/Chair/MultiHumanPose)
-| Campus DS    | R                 | Handmade anotatio |          | [[project]](https://www.epfl.ch/labs/cvlab/software/tracking-and-modelling-people/pom/)
-
-
+| VoxCeleb     | R                 |                   | Youtube videos of people speaking | [[project]](https://www.robots.ox.ac.uk/~vgg/data/voxceleb/vox1.html) |
+| HUMBI        | R                 | CV KRCM keypoints | 107 HD cameras, body, hands and face/gaze movements | [[project]](https://github.com/zhixuany/HUMBI) |
+| MANO         | R                 | CV 3DHD model     | 1000 HD cameras scanning in 3D hands of 31 subjects in diverse poses | [[project]](https://mano.is.tue.mpg.de/) |
+| Shelf DS     | R                 | Handmade anotatio | indoor scenes around a shelf | [[project]](https://campar.in.tum.de/Chair/MultiHumanPose) |
+| Campus DS    | R                 | Handmade anotatio | outdoor scenes | [[project]](https://www.epfl.ch/labs/cvlab/software/tracking-and-modelling-people/pom/) |
+| Total Capture | R                | IMU and MC Vicon  | first dataset to have fully synchronised muli-view video, IMU and Vicon labelling | [[project]](https://cvssp.org/data/totalcapture/) |
+| DIP-IMU      | R                 | IMU               | 10 subjects wearing 17 IMUs in 64 sequences | [[project]](https://dip.is.tue.mpg.de/) |
+| AIST         | R                 | CV                | Challenging motions 30 subjects captured by 9 views | [[project]](https://google.github.io/aistplusplus_dataset/factsfigures.html) | 
+| HPS          | S based on R      | HMDFOV and IMU    | Evolution of an SMPL generated model inside very larges scanned areas. SMPL model is obtained from HMDFOV and IMUs | [[project]](https://virtualhumans.mpi-inf.mpg.de/hps/) |
 
 
 ## Brands doing MoCap
