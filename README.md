@@ -47,7 +47,6 @@ Summary of all existing real time markerless motion capture tools
 
 CV = Computer Vision
 MPI = Max Planck Institute
-MPI-INF-3DHP = Only Computer Vision
 IJCV = International Journal of Computer Vision
 GT = Ground Truth
 CNN = Convoluted Neural Network
@@ -57,7 +56,7 @@ CVAE = Conditional Variational AutoEncoder
 HPE3DA = Human Pose Estimator 3D with Angles
 
 
-| num | name              | fps | nb cam   | Multimodal | Multiperson | Open | date  | author       | conf/journ | output | MPJPE (mm) | Joint ang | MJRE (°) | method calc | dataset GT     | comments | link |
+| num | name              | fps | nb cam   | Multimodal | Multiperson | Open | date  | author       | conf/journ | output | MPJPE (mm) | Joint ang | MJRE (°) | method calc | dataset comp   | comments | link |
 | --- | ----------------- | --- | -------- | ---------- | ----------- | ---- | ----- | ------------ | ---------- | ------ | ---------- | --------- | -------- | ----------- | -------------- | -------- | ---- |
 | 1   | XNect             | 30  | 1        | NO         | YES         | NO   | 07/20 | MPI          | SIGGRAPH20 | HPE3DA | 63.6       | YES       | ungiven  | Neural Net  | Human3.6m (MC) | CNN (SelecSLS) estimating 2D/3D pose features for visible joints -> FCN computing complete 3D pose for all individuals -> space-time skeletal model fitting to predicted 2D/3D pose to reconcile 2D/3D pose and enforce temporal coherence | [[project]](http://gvv.mpi-inf.mpg.de/projects/XNect/) |
 | 2   | 4D graph          | 30  | 5        | NO         | YES         | YES  | 01/21 | Tsinghua Uni | CVPR20     | HPE3D  | % given    | NO        | NONE     | NONE        | Own (MC OptiTrack) | 4D association graph where each limb detected by a camera from a bottom-up method is associated with the some limb detected by others cameras and there also is a a temporal connection between limbs | [[code]](https://github.com/zhangyux15/4d_association) |
@@ -66,10 +65,10 @@ HPE3DA = Human Pose Estimator 3D with Angles
 | 5   | ELMO              | 60  | 1 LIDAR  | NO         | NO          | YES  | 10/24 | MOVIN inc.   | SIGASIA24  | HPE3DA | 48.6       | YES       | 10.41    | Neural net  | Own (MC OptiTrack) | Enhancement of MOVIN with a upsampling technique for LIDAR frequency augmentation | [[pdf]](https://arxiv.org/pdf/2410.06963)
 | 6   | RTMO              | 141 | 1        | NO         | YES         | YES  | 06/24 | Tsinghua GS  |            | HPE2D  | AP given   | NO        | NONE     | NONE        | COCO/CrowdPose (CV) | One Stage method based on Neural network which allows a very high fps rate on GPU | [[pdf]](https://arxiv.org/pdf/2312.07526.pdf) |
 | 7   | RGBD-based        | 30  | 1 Kinect | NO         | NO          | YES  | 03/21 | Samsung AI   | WACV21     | SMPL-X |            | YES       |          |             |                | Combination of existing neural networks for hands, body pose and facial expressions | [[code]](https://github.com/rmbashirov/rgbd-kinect-pose) |
-| 8   | Deep3DPose        | 20  | 1        | NO         | NO          | NO   | 06/21 | Chinese prof |            | SMPL   | 41.8       | YES       | ungiven  |             |  Human3.6M (MC) & 3DPW (IMU) |          | [[paper]](https://arxiv.org/pdf/2106.11536.pdf) |
-| 9   | Inter-P correl    | 31  | 1        | NO         |             |      | 04/21 | Tsinghua Uni |            | SMPLH  |            |           |          | IKNet       |                | precise hands and head | [[paper]](https://arxiv.org/pdf/2012.06087.pdf) |
-| 10  | F VXPose          | 31  | 5        | NO         |             |      | 07/22 | Peking Uni   |            | HPE3D  |       |           |             |                |          | [[pdf]](https://arxiv.org/pdf/2207.10955.pdf) |
-| 11  | BlazePose         | 15  | 1        | NO         |             |      | 06/22 | Google       |            | FullB  |       |           | GHUM        |                | works on phone | [[pdf]](https://arxiv.org/pdf/2206.11678.pdf) |
+| 8   | Deep3DPose        | 20  | 1        | NO         | NO          | NO   | 06/21 | Chinese prof |            | SMPL   | 41.8       | YES       | ungiven  |             | Human3.6M (MC) & 3DPW (IMU) |          | [[paper]](https://arxiv.org/pdf/2106.11536.pdf) |
+| 9   | Inter-P correl    | 31  | 1        | NO         | NO          | NO   | 04/21 | Tsinghua Uni | CVPR21     | SMPLH  | 50.3       | YES       | ungiven  | IKNet FCN   | Human3.6m (MC) & HUMBI (CV) | precise hands and head /  3 FCN BodyIKNet, HandIKNet and FaceNet are used to get IK results. DetNet is a first neural network that isolate hands and body and gives keypoints from a raw image to Hand and Body IKNets. Finally a SMPLH model is reconstructed and combined with a 3DMM face model. Metrics for hand, head and body precision are available in the paper| [[paper]](https://arxiv.org/pdf/2012.06087.pdf) |
+| 10  | F VXPose          | 31  | 5        | NO         | YES         | YES  | 07/22 | Peking Uni   | ECCV20     | HPE3D  | 18,3       | NO        | NONE     | NONE        | CMU Panoptic (CV) | 3D Triangulation from an off-the-shelf HPE2D | [[pdf]](https://arxiv.org/pdf/2207.10955.pdf) |
+| 11  | BlazePose         | 15  | 1        | NO         | YES         | NO   | 06/22 | Google       |            | GHUM   | 78         | NO        | NONE     | NONE        | "set containing in the wild images" | works on phone / 2D then 3D landmark extracted from HPE BPG3D and full body generated from landmarks by GHUM Litter (comparable to SMPL) | [[pdf]](https://arxiv.org/pdf/2206.11678.pdf) |
 | 12  | MultiVid IMU      |     |          | YES (IMU)  |             |      | 01/19 |              | IJCV20     |        |       |           |             |                |          | [[paper]](https://link.springer.com/content/pdf/10.1007/s11263-019-01270-5.pdf) |
 | 13  | PIP               |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[project]](https://xinyu-yi.github.io/PIP/) |
 | 14  | TIP Attention     |     |          |            |             |      |       |              |            |        |       |           |             |                |          | [[pdf]](https://arxiv.org/pdf/2203.15720.pdf) |
@@ -102,6 +101,10 @@ HPE3DA = Human Pose Estimator 3D with Angles
 | CrowdPose    | R                 | Handmade anotatio | Large dataset anotated by pepole | [[project]](https://github.com/jeffffffli/CrowdPose) |
 | AMASS        | S based on R      | SMPL based on MC  | Combination of 15 MC datasets in one and applying SMPL model to thes 40hs of MC | [[project]](https://amass.is.tue.mpg.de/) |
 | VoxCeleb     | R                 |                   | Youtube videos of people speaking | [[project]](https://www.robots.ox.ac.uk/~vgg/data/voxceleb/vox1.html)
+| HUMBI        | R                 | CV KRCM keypoints | 107 HD cameras, body, hands and face/gaze movements | [[project]](https://github.com/zhixuany/HUMBI)
+| MANO         | R                 | CV 3DHD model     | 1000 HD cameras scanning in 3D hands of 31 subjects in diverse poses | [[project]](https://mano.is.tue.mpg.de/)
+| Shelf DS     | R                 | Handmade anotatio |          | [[project]](https://campar.in.tum.de/Chair/MultiHumanPose)
+| Campus DS    | R                 | Handmade anotatio |          | [[project]](https://www.epfl.ch/labs/cvlab/software/tracking-and-modelling-people/pom/)
 
 
 
