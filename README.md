@@ -49,6 +49,9 @@ DS = Data Set
 CVAE = Conditional Variational AutoEncoder
 HPE3DA = Human Pose Estimator 3D with Angles
 HMD = Head Mounted Display
+MLP = MultiLayer Perceptron
+
+Tsinghua is associated with MPI
 
 
 | num | name              | fps | nb cam   | Multimodal | Multiperson | Open | date  | author       | conf/journ | output | MPJPE (mm) | Joint ang | MJRE (°) | method calc | dataset comp   | comments | link |
@@ -70,10 +73,10 @@ HMD = Head Mounted Display
 | 15  | Fus poser         |     | 0 (6IMU) | YES (IMU+HMD) | NO       | NO   | 06/22 | Korea ETI    |            | SMPL   | 50.51      | YES       | 11.31    | Neural net  | Total Capture (MC) | Combination of HMD and IMUs data by a neural network that calculates SMPL parameters | [[project]](https://shaohua-pan.github.io/robustcap-page/) |
 | 16  | TIP Attention     |     |          |            |             |      | 03/22 |              |            |        |            |           |          |             |                | Barely the same as TIP Generation | [[pdf]]([[project]](https://www.researchgate.net/publication/359574778_Transformer_Inertial_Poser_Attention-based_Real-time_Human_Motion_Reconstruction_from_Sparse_IMUs)) |
 | 17  | Fusing            |     | 1        | YES (IMU)  | NO          | YES  | 09/23 | Tsinghua Uni | SIGASIA23  | SMPL   | 33.5       | YES       | ungiven  |             | Total Capture (MC) & 3DPW (IMU) & AIST (CV) |           | [[project]](https://shaohua-pan.github.io/robustcap-page/) |
-| 18  | EgoPoser          | 600 | 1 HMDFOV | YES (HMD)  | NO          | YES  | 09/24 | ETH Zürich   | ECCV 2024  | SMPLH  | 69         |           |          |             | HPS (HMDFOV+IMU) |           | [[pdf]](https://arxiv.org/pdf/2308.06493.pdf) |
-| 19  | SparsePoser       |     |          |            |             |      |       |              |            |        |            |           |          |             |                |           | [[project]](https://upc-virvig.github.io/SparsePoser/) |
-| 20  | HMD-Poser         |     |          |            |             |      |       |              |            |        |            |           |          |             |                |           | [[project]](https://pico-ai-team.github.io/hmd-poser) |
-| 21  | Simu Avatar       |     |          |            |             |      |       |              |            |        |            |           |          |             |                |           | [[project]](https://www.zhengyiluo.com/SimXR/) |
+| 18  | EgoPoser          | 600 | 1 HMDFOV | YES (HMD)  | NO          | YES  | 09/24 | ETH Zürich   | ECCV24     | SMPLH  | 69         |           |          |             | HPS (HMDFOV+IMU) |           | [[pdf]](https://arxiv.org/pdf/2308.06493.pdf) |
+| 19  | SparsePoser       |     | 0 (6 VR markers) | NO (VR Tools) | NO | YES | 10/23 | Uni Poly Cat | ACMTC23   | 3DIK   | 28.1       | YES       | 5.78     | Neural Net  | Human4D (MC) & SOMA (MC) | Very well explained. VAE that encodes and decodes keypoints from data from 6 VR tools (HMD, Controllers in hands, pelvic rotational and positional marker and same on foot). Then, multiple Neural networks trained to compute IK from different limbs | [[project]](https://upc-virvig.github.io/SparsePoser/) |
+| 20  | HMD-Poser         | 205 | 0 (HMD+2cont+3IMuU) | YES (VR tools + IMU) | NO | YES | 03/24 | PICO/Bytedance | CVPR24 | SMPL | 31.3 | YES      | 3.49     | Neural Net  | AMASS (MC) & HumanEva (MC) | Variable inputs from HMD only with 2 VR controllers in hand to HMD and controllers + 3 IMUs passing by HMD and controllers + 2 IMUs | [[project]](https://pico-ai-team.github.io/hmd-poser) |
+| 21  | Simu Avatar       | 30  | 1 HMDFOV | YES (HMD)  | NO          | YES  | 06/24 | Meta         | CVPR24     | SMPL   | 47.7       | YES       | ungiven  | MLP         | ADT (MC + HMD)    | Hands and foot are well computed when tey enter HMDFOV. If not, the whole body is estimated based on HMD orientation and real world physics only which can cause failures depending on HMDFOV | [[project]](https://www.zhengyiluo.com/SimXR/) |
 
 
 
@@ -94,7 +97,7 @@ HMD = Head Mounted Display
 | ELMO DS      | R                 | MC OptiTrack      | update to MOVIN DS more subject and poses same method | [[project]](https://github.com/MOVIN3D/ELMO_SIGASIA2024) |
 | COCO         | R                 | Handmade anotatio | Large dataset anotated by pepole | [[project]](https://cocodataset.org/#keypoints-2020) |
 | CrowdPose    | R                 | Handmade anotatio | Large dataset anotated by pepole | [[project]](https://github.com/jeffffffli/CrowdPose) |
-| AMASS        | S based on R      | SMPL based on MC  | Combination of 15 MC datasets in one and applying SMPL model to thes 40hs of MC | [[project]](https://amass.is.tue.mpg.de/) |
+| AMASS        | S based on R      | SMPL based on MC  | Combination of 15 MC datasets in one and applying SMPL model to the 40hs of MC | [[project]](https://amass.is.tue.mpg.de/) |
 | VoxCeleb     | R                 |                   | Youtube videos of people speaking | [[project]](https://www.robots.ox.ac.uk/~vgg/data/voxceleb/vox1.html) |
 | HUMBI        | R                 | CV KRCM keypoints | 107 HD cameras, body, hands and face/gaze movements | [[project]](https://github.com/zhixuany/HUMBI) |
 | MANO         | R                 | CV 3DHD model     | 1000 HD cameras scanning in 3D hands of 31 subjects in diverse poses | [[project]](https://mano.is.tue.mpg.de/) |
@@ -104,6 +107,10 @@ HMD = Head Mounted Display
 | DIP-IMU      | R                 | IMU               | 10 subjects wearing 17 IMUs in 64 sequences | [[project]](https://dip.is.tue.mpg.de/) |
 | AIST         | R                 | CV                | Challenging motions 30 subjects captured by 9 views | [[project]](https://google.github.io/aistplusplus_dataset/factsfigures.html) | 
 | HPS          | S based on R      | HMDFOV and IMU    | Evolution of an SMPL generated model inside very larges scanned areas. SMPL model is obtained from HMDFOV and IMUs | [[project]](https://virtualhumans.mpi-inf.mpg.de/hps/) |
+| DanceDB      | R                 | MC                | People dancing in a Mo cap environement, part of the AMASS DS | [[project]](https://dancedb.cs.ucy.ac.cy/main/performances) |
+| Human4D      | R                 | MC                |          | [[project]](https://tofis.github.io/human4d_dataset/)
+| SOMA         | R                 | MC                |          | [[project]](https://soma.is.tue.mpg.de/)
+| ADT          | R                 | MC                | Interactions with environment filmed from a HMDFOV (EgoCentred position). High level MoCap on the environment too | [[project]](https://explorer.projectaria.com/adt)
 
 
 ## Brands doing MoCap
